@@ -1,0 +1,35 @@
+﻿@page "/"
+@using AndroidNetMauiPoC.Service
+@inject IServiceUnderTest _serviceUnderTest
+
+<button @onclick="ExecuteAsync">Execute test</button>
+
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <div style="margin-top:20px; padding:10px; background-color:#fdd; border:1px solid #f00; color:#900; max-width:400px; white-space: pre-wrap; overflow-wrap: break-word;">
+        <strong>Error generating the dump:</strong><br />
+        @ErrorMessage
+    </div>
+}
+
+@code {
+
+    private string? ErrorMessage;
+
+    private async Task ExecuteAsync()
+    {
+        ErrorMessage = string.Empty;
+
+        try
+        {
+            await _serviceUnderTest.ExecuteAsync();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.ToString();
+        }
+    }
+
+
+}

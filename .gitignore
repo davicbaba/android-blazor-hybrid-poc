@@ -1,0 +1,15 @@
+# Visual Studio cache/options directory
+.vs/
+
+# .NET local tools
+.config/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.user
+
+# AWS SAM files
+.aws-sam/
