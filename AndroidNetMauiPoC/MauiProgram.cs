@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using AndroidNetMauiPoC.Service;
+using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 
 namespace AndroidNetMauiPoC
 {
@@ -14,6 +16,8 @@ namespace AndroidNetMauiPoC
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 });
+
+            //LoadConfiguration();
 
             builder.Services.AddMauiBlazorWebView();
 
@@ -32,5 +36,7 @@ namespace AndroidNetMauiPoC
 
             return builder.Build();
         }
+
+
     }
 }

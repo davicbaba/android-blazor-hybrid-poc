@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using AndroidNetMauiPoC.Service
+@using System.Text.Json
 @inject IServiceUnderTest _serviceUnderTest
 
 <button @onclick="ExecuteAsync">Execute test</button>
@@ -13,9 +14,18 @@
     </div>
 }
 
+@if (!string.IsNullOrEmpty(Json))
+{
+    <pre>
+        @(JsonSerializer.Serialize(Json, new JsonSerializerOptions() { WriteIndented = true }))
+    </pre>
+}
+
+
 @code {
 
     private string? ErrorMessage;
+    private string? Json;
 
     private async Task ExecuteAsync()
     {
@@ -24,6 +34,7 @@
         try
         {
             await _serviceUnderTest.ExecuteAsync();
+            Json = await _serviceUnderTest.GetAppSettings();
         }
         catch (Exception ex)
         {

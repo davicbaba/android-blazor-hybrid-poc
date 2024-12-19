@@ -9,5 +9,7 @@ namespace AndroidNetMauiPoC.Service
     internal interface IServiceUnderTest
     {
         Task ExecuteAsync();
+
+        Task<string> GetAppSettings();
     }
 }

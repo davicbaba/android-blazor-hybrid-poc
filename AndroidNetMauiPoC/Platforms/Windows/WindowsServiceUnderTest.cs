@@ -13,5 +13,10 @@ namespace AndroidNetMauiPoC.Platforms.Windows
         {
             throw new NotImplementedException();
         }
+
+        public Task<string> GetAppSettings()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
